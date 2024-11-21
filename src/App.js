@@ -1,23 +1,28 @@
-import logo from './logo.svg';
 import './App.css';
-
+import Greeting from './Greeting';
+import Counter from './Counter';
+import { useState } from 'react';
+import ColorPicker from './ColorPicker';
 function App() {
+  const [color, setColor] = useState(undefined);
+  const passedData = (data) => {
+    setColor(data);
+  };
+
+  const [showCounter, setShowCounter] = useState(true);
+  function handleClick1(){setShowCounter(true)};
+  function handleClick2(){setShowCounter(false)};
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Greeting name="shaya" />
+      <button onClick={handleClick1} >Show Counter</button>
+      <button onClick={handleClick2} >Show Color Picker</button>
+
+      {showCounter ? <Counter /> : 
+      <ColorPicker sendFunctionToCall={passedData} />}
+      <p>The color is {color}</p>
+
     </div>
   );
 }
