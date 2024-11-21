@@ -15,7 +15,7 @@ function App() {
 
   return (
     <div className="App">
-      <Greeting name="shaya" />
+      <Greeting name="Shaya" />
       <button onClick={handleClick1} >Show Counter</button>
       <button onClick={handleClick2} >Show Color Picker</button>
 
